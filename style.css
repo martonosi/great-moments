@@ -1,0 +1,228 @@
+/* ---------------------------------------------------------------
+   Curated materials site — shared styles
+   One stylesheet for every page. Edit colours in :root below.
+   --------------------------------------------------------------- */
+
+:root {
+  --paper:     #eceff3;
+  --card:      #ffffff;
+  --ink:       #131b24;
+  --ink-soft:  #59667a;
+  --rule:      #ccd4dd;
+  --read:      #3e52a0;   /* readings  (PDF) */
+  --watch:     #17685c;   /* video links      */
+
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body:    "Source Serif 4", Georgia, serif;
+  --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --measure: 68rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--read); }
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- masthead ------------------------------------------------- */
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 4.5rem 0 3rem;
+}
+
+.masthead .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.masthead h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  max-width: 20ch;
+}
+
+.masthead p {
+  margin: 0;
+  max-width: 54ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+/* --- folder grid ---------------------------------------------- */
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 3.5rem 0 1.25rem;
+}
+
+.folders {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1.25rem;
+  padding-bottom: 5rem;
+}
+
+.folder {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1.5rem 1.5rem 1.35rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.14s ease, box-shadow 0.14s ease,
+              border-color 0.14s ease;
+}
+
+.folder:hover,
+.folder:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--ink);
+  box-shadow: 0 6px 18px rgba(19, 27, 36, 0.09);
+}
+
+.folder h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.22rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.55rem;
+}
+
+.folder p {
+  margin: 0 0 1.2rem;
+  font-size: 0.97rem;
+  color: var(--ink-soft);
+}
+
+/* the spine: one tick per item, coloured by kind */
+.spine {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.7rem;
+}
+
+.spine i {
+  height: 15px;
+  width: 4px;
+  border-radius: 1px;
+  background: var(--read);
+}
+
+.spine i.v { background: var(--watch); }
+
+.counts {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.counts b { font-weight: 500; color: var(--read); }
+.counts b.v { color: var(--watch); }
+
+/* --- topic page ----------------------------------------------- */
+
+.back {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.back:hover { color: var(--ink); }
+
+.items { padding-bottom: 5rem; }
+
+.item {
+  border-top: 1px solid var(--rule);
+  padding: 1.6rem 0;
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.5rem;
+}
+
+.kind {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding-top: 0.35rem;
+  color: var(--read);
+}
+
+.kind.v { color: var(--watch); }
+
+.item h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+  line-height: 1.35;
+}
+
+.item h3 a { text-decoration: none; }
+.item h3 a:hover { text-decoration: underline; }
+
+.item .meta {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.6rem;
+}
+
+.item .note {
+  margin: 0;
+  max-width: 62ch;
+  color: #2c3949;
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0 3.5rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+/* --- small screens -------------------------------------------- */
+
+@media (max-width: 34rem) {
+  .item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .kind { padding-top: 0; }
+  .masthead { padding: 3rem 0 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folder { transition: none; }
+  .folder:hover { transform: none; }
+}
